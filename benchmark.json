@@ -1,0 +1,110 @@
+[
+  {
+    "model": "gemini-3.5-flash-lite",
+    "question": "LoRAとは何ですか？",
+    "elapsed_seconds": 2.905579,
+    "input_tokens": 7,
+    "output_tokens": 591,
+    "total_tokens": 598,
+    "error": null
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "question": "LoRAとは何ですか？",
+    "elapsed_seconds": 2.694746,
+    "input_tokens": 7,
+    "output_tokens": 531,
+    "total_tokens": 538,
+    "error": null
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "question": "LoRAとは何ですか？",
+    "elapsed_seconds": 2.979092,
+    "input_tokens": 7,
+    "output_tokens": 495,
+    "total_tokens": 502,
+    "error": null
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "question": "RAGとは何ですか？",
+    "elapsed_seconds": 2.902969,
+    "input_tokens": 7,
+    "output_tokens": 584,
+    "total_tokens": 591,
+    "error": null
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "question": "RAGとは何ですか？",
+    "elapsed_seconds": 3.11347,
+    "input_tokens": 7,
+    "output_tokens": 677,
+    "total_tokens": 684,
+    "error": null
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "question": "RAGとは何ですか？",
+    "elapsed_seconds": 2.742145,
+    "input_tokens": 7,
+    "output_tokens": 554,
+    "total_tokens": 561,
+    "error": null
+  },
+  {
+    "model": "gemini-3.5-flash",
+    "question": "LoRAとは何ですか？",
+    "elapsed_seconds": 12.483163,
+    "input_tokens": 7,
+    "output_tokens": 597,
+    "total_tokens": 1560,
+    "error": null
+  },
+  {
+    "model": "gemini-3.5-flash",
+    "question": "LoRAとは何ですか？",
+    "elapsed_seconds": 10.138367,
+    "input_tokens": 7,
+    "output_tokens": 719,
+    "total_tokens": 1760,
+    "error": null
+  },
+  {
+    "model": "gemini-3.5-flash",
+    "question": "LoRAとは何ですか？",
+    "elapsed_seconds": 18.197218,
+    "input_tokens": 7,
+    "output_tokens": 750,
+    "total_tokens": 1770,
+    "error": null
+  },
+  {
+    "model": "gemini-3.5-flash",
+    "question": "RAGとは何ですか？",
+    "elapsed_seconds": 15.491064,
+    "input_tokens": 7,
+    "output_tokens": 812,
+    "total_tokens": 1756,
+    "error": null
+  },
+  {
+    "model": "gemini-3.5-flash",
+    "question": "RAGとは何ですか？",
+    "elapsed_seconds": 16.971323,
+    "input_tokens": 7,
+    "output_tokens": 727,
+    "total_tokens": 1669,
+    "error": null
+  },
+  {
+    "model": "gemini-3.5-flash",
+    "question": "RAGとは何ですか？",
+    "elapsed_seconds": 10.466049,
+    "input_tokens": 7,
+    "output_tokens": 711,
+    "total_tokens": 1617,
+    "error": null
+  }
+]
