@@ -6,10 +6,12 @@
 
 import json
 import random
+from datetime import datetime, timezone
 from functools import cache
 from pathlib import Path
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
+LEARNING_LOG_DIR = Path(__file__).resolve().parent.parent / "learning_log"
 MAX_RESULTS = 3
 
 
@@ -98,4 +100,21 @@ def make_quiz(lecture: int) -> str:
         },
         ensure_ascii=False,
     )
-    
+
+
+def save_learning_log(question: str, answer: str) -> str:
+    """学習した質問と回答を学習ログに保存する。
+
+    利用者が「この回答を学習記録に保存して」のように依頼したときに使う。
+    保存内容は後から確認できるよう JSON Lines 形式で追記する。
+    """
+    LEARNING_LOG_DIR.mkdir(parents=True, exist_ok=True)
+    log_path = LEARNING_LOG_DIR / "learning_log.jsonl"
+    record = {
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "question": question,
+        "answer": answer,
+    }
+    with log_path.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(record, ensure_ascii=False) + "\n")
+    return f"学習ログを保存しました: {log_path}"
