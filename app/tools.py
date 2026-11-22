@@ -126,16 +126,42 @@ def search_materials(query: str) -> str:
 
     queryに調べたい内容を指定する。
     """
+    return _search_materials(query, preview=False)
+
+
+def search_candidates(query: str) -> str:
+    """講義をベクトル検索し、候補のID・タイトル・短い抜粋を関連順に返す。"""
+    return _search_materials(query, preview=True)
+
+
+def _search_materials(query: str, *, preview: bool) -> str:
     from google.genai.errors import APIError
     import sqlite3
     from app.retrieval import search
 
     try:
-        return json.dumps({"results": search(query)}, ensure_ascii=False)
+        results = search(query)
+        if preview:
+            results = [
+                {"page_id": page["page_id"], "title": page["title"],
+                 "excerpt": " ".join(page["content"].split())[:120]}
+                for page in results
+            ]
+        return json.dumps({"results": results}, ensure_ascii=False)
     except (ValueError, FileNotFoundError, sqlite3.Error) as e:
         return json.dumps({"error": str(e), "results": []}, ensure_ascii=False)
     except APIError as e:
         return json.dumps({"error": api_error_message(e.code), "results": []}, ensure_ascii=False)
+
+
+def open_pages(page_ids: list[str]) -> str:
+    """検索候補から選んだページIDをまとめて指定し、全文と引用情報を読む。"""
+    from app.retrieval import read_pages
+
+    try:
+        return json.dumps({"results": read_pages(page_ids)}, ensure_ascii=False)
+    except (ValueError, OSError) as e:
+        return json.dumps({"error": str(e), "results": []}, ensure_ascii=False)
 
 
 def browse_tree(node_id: str | None = None) -> str:

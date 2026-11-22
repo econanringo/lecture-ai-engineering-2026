@@ -78,10 +78,18 @@ def browse_tree(node_id: str | None = None) -> dict:
 
 def read_page(page_id: str) -> dict:
     """第1〜3回の本講義から、指定した1ページの本文と引用情報を返す。"""
-    for page in load_pages(RAG_SOURCE):
-        if page["page_id"] == page_id:
-            return page
-    raise ValueError("対象のページが見つかりません。")
+    return read_pages([page_id])[0]
+
+
+def read_pages(page_ids: list[str]) -> list[dict]:
+    """指定された順に、重複を除いたページの本文と引用情報を返す。"""
+    if not page_ids:
+        raise ValueError("ページIDを1件以上指定してください。")
+    pages = {page["page_id"]: page for page in load_pages(RAG_SOURCE)}
+    try:
+        return [pages[page_id] for page_id in dict.fromkeys(page_ids)]
+    except KeyError as exc:
+        raise ValueError(f"対象のページが見つかりません。ID: {exc.args[0]}") from exc
 
 
 def normalized_vector(values: list[float]) -> list[float]:
